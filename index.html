@@ -1,1 +1,19 @@
+<head><script>
+  // Detect if the page is in an iframe
+  if (window.top !== window.self) {
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", function (e) {
+          const href = this.getAttribute("href");
+          if (href && !href.startsWith("#") && !href.startsWith("javascript:")) {
+            e.preventDefault();
+            window.top.location.href = href;
+          }
+        });
+      });
+    });
+  }
+</script>
+</head>
+
 <a href="https://roms.br3xality.org/files/" target="_parent" >placeholder, the link to the ROM dir</a>
